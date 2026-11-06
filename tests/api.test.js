@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {Miniflare} from 'miniflare';
 import {readFile} from 'node:fs/promises';
 test('Levels 1–3: persistence, validation, concurrency and cancellation',async()=>{
- const mf=new Miniflare({modules:true,scriptPath:'worker/index.js',compatibilityDate:'2026-01-01',d1Databases:['DB'],bindings:{API_KEY:'test-key'}});
+ const mf=new Miniflare({modules:true,modulesRules:[{type:'ESModule',include:['**/*.js']}],scriptPath:'worker/index.js',compatibilityDate:'2026-01-01',d1Databases:['DB'],bindings:{API_KEY:'test-key'}});
  try {
  const db=await mf.getD1Database('DB'); await db.exec((await readFile('drizzle/0000_clinic.sql','utf8')).replaceAll('\n',' '));
  const call=async(path,method='GET',body,key='test-key')=>{const r=await mf.dispatchFetch('http://localhost'+path,{method,headers:{'X-API-Key':key,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});return {status:r.status,body:await r.json()}};
