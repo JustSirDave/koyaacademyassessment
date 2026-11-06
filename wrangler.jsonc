@@ -1,0 +1,1 @@
+{"name":"koya-clinic-booking","main":"worker/index.js","compatibility_date":"2026-01-01","d1_databases":[{"binding":"DB","database_name":"clinic","database_id":"local-clinic","migrations_dir":"drizzle"}]}
