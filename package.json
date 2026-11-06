@@ -1,1 +1,15 @@
-{"name":"koya-clinic-booking","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test","build":"node scripts/build.mjs","dev":"wrangler dev"},"devDependencies":{"miniflare":"3.20250718.3","wrangler":"3.114.15"}}
+{
+  "name": "koya-clinic-booking",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build.mjs",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "miniflare": "3.20250718.3",
+    "wrangler": "3.114.15"
+  }
+}

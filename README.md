@@ -29,3 +29,7 @@ The shared API key grants access to all assessment API operations, including res
 ## Demo (under five minutes)
 
 See `DEMO.md` for the recording script. A Loom recording requires the submitter's Loom account and voice/screen capture.
+
+## Understanding the code
+
+Read [WALKTHROUGH.md](WALKTHROUGH.md) for the request flow, file-by-file explanation, database guarantees, npm configuration, and answers to likely assessment questions. Authored JavaScript and Wrangler configuration include explanatory block comments. Standard JSON files cannot contain comments, and applied SQL migrations remain unchanged; those files are explained in the walkthrough.

@@ -1,1 +1,20 @@
-{"name":"koya-clinic-booking","main":"worker/index.js","compatibility_date":"2026-01-01","d1_databases":[{"binding":"DB","database_name":"clinic","database_id":"local-clinic","migrations_dir":"drizzle"}]}
+/*
+ * Local development configuration for Wrangler. main identifies the Worker
+ * entrypoint; DB must match the binding used in api.js. migrations_dir points
+ * to the committed SQL schema. database_id is a local placeholder and must be
+ * replaced with a real D1 database ID for a personal Cloudflare deployment.
+ * Sites production deployment uses .openai/hosting.json instead.
+ */
+{
+  "name": "koya-clinic-booking",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-01-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "clinic",
+      "database_id": "local-clinic",
+      "migrations_dir": "drizzle",
+    },
+  ],
+}

@@ -14,7 +14,7 @@
  * This script prepares files only. Publishing, configuring runtime secrets, and
  * applying hosted database migrations are separate deployment responsibilities.
  */
-import {mkdir,copyFile,cp} from 'node:fs/promises';
+import { mkdir, copyFile, cp } from "node:fs/promises";
 
 /*
  * Create the output directories before copying files into them. `recursive`
@@ -25,8 +25,8 @@ import {mkdir,copyFile,cp} from 'node:fs/promises';
  * overwritten, but files removed from the source can remain in the output.
  * Use a clean dist directory when preparing a release after deleting files.
  */
-await mkdir('dist/server',{recursive:true});
-await mkdir('dist/.openai',{recursive:true});
+await mkdir("dist/server", { recursive: true });
+await mkdir("dist/.openai", { recursive: true });
 
 /*
  * Copy the entire Worker source directory, preserving its module structure.
@@ -34,7 +34,7 @@ await mkdir('dist/.openai',{recursive:true});
  * resolve to api.js and page.js copied alongside it. The page is embedded in a
  * JavaScript module, so no separate frontend asset build is required.
  */
-await cp('worker','dist/server',{recursive:true});
+await cp("worker", "dist/server", { recursive: true });
 
 /*
  * Include the hosting manifest in the generated artifact. It identifies the
@@ -42,7 +42,7 @@ await cp('worker','dist/server',{recursive:true});
  * API keys belong in the host's runtime secrets, never in this manifest or the
  * generated application files. Copy the manifest unchanged to preserve identity.
  */
-await copyFile('.openai/hosting.json','dist/.openai/hosting.json');
+await copyFile(".openai/hosting.json", "dist/.openai/hosting.json");
 
 /*
  * Include the database migration files for the deployment workflow. They define
@@ -53,4 +53,4 @@ await copyFile('.openai/hosting.json','dist/.openai/hosting.json');
  * Each operation is awaited so a filesystem error rejects the script and makes
  * the build fail instead of reporting success with an incomplete artifact.
  */
-await cp('drizzle','dist/drizzle',{recursive:true});
+await cp("drizzle", "dist/drizzle", { recursive: true });
